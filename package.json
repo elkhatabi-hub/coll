@@ -54,8 +54,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "VOTRE_COMPTE_GITHUB",
-        "repo": "edu-manager-desktop"
+        "owner": "elkhatabi-hub",
+        "repo": "coll"
       }
     ]
   }
