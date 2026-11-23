@@ -1,0 +1,62 @@
+{
+  "name": "edu-manager-desktop",
+  "version": "1.0.0",
+  "description": "Plateforme locale de gestion éducative",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "electron:dev": "electron .",
+    "build": "vite build && electron-builder --win",
+    "build:win": "vite build && electron-builder --win nsis",
+    "publish:win": "vite build && electron-builder --win nsis --publish always"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "better-sqlite3": "^11.5.0",
+    "electron-updater": "^6.3.9",
+    "lucide-react": "^0.460.0",
+    "pdfmake": "^0.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.0.1"
+  },
+  "build": {
+    "appId": "com.edumanager.desktop",
+    "productName": "EduManager",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "electron/database/schema.sql",
+        "to": "database/schema.sql"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "VOTRE_COMPTE_GITHUB",
+        "repo": "edu-manager-desktop"
+      }
+    ]
+  }
+}
